@@ -348,9 +348,14 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
-                    <include>**/*.*</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
                 </includes>
                 <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources/BPM</directory>
+                <targetPath>BPM</targetPath>
             </resource>
         </resources>
     </build>
