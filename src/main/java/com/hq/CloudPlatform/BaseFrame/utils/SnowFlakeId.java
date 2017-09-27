@@ -106,6 +106,14 @@ public class SnowFlakeId {
         return System.currentTimeMillis();
     }
 
+    /**
+     * 根据提供的时间格式以及时间字符串表达式转换为时间并获取该时间的毫秒数
+     *
+     * @param dataFormat 时间的表达式格式，例如：yyyy-MM-dd
+     * @param dataStr    时间表达式，例如：2017-01-01
+     * @return
+     * @throws ParseException
+     */
     public static long getTimestamp(String dataFormat, String dataStr) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat(dataFormat);
 
@@ -115,8 +123,48 @@ public class SnowFlakeId {
         return longDate;
     }
 
+    /**
+     * 根据雪花ID反向获取创建ID时的序列号
+     *
+     * @param snowFlakeId
+     * @return
+     */
+    public static long getSequenceById(long snowFlakeId) {
+        return snowFlakeId & 0xFFFL;
+    }
+
+    /**
+     * 根据雪花ID反向获取创建该ID时所在机器
+     *
+     * @param snowFlakeId
+     * @return
+     */
+    public static long getMachineById(long snowFlakeId) {
+        return (snowFlakeId & 0x1F000L) >> MACHINE_LEFT;
+    }
+
+    /**
+     * 根据雪花ID反向获取创建该ID时所在数据中心
+     *
+     * @param snowFlakeId
+     * @return
+     */
+    public static long getDataCenterById(long snowFlakeId) {
+        return (snowFlakeId & 0x370000L) >> DATACENTER_LEFT;
+    }
+
+    /**
+     * 根据雪花ID反向获取该ID的创建时间
+     *
+     * @param snowFlakeId
+     * @return
+     */
+    public static long getTimestampById(long snowFlakeId) {
+        return (snowFlakeId >> TIMESTMP_LEFT) + START_STMP;
+    }
+
     public static void main(String[] args) {
-        SnowFlakeId snowFlake = new SnowFlakeId(1, 1);
+        SnowFlakeId snowFlake = new SnowFlakeId(8, 23);
 
         for (int i = 0; i < (1 << 12); i++) {
             System.out.println(snowFlake.nextId());
