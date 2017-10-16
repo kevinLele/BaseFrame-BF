@@ -159,6 +159,20 @@
     </filter-mapping>
     <!-- ======================== 单点登录/登出结束 ======================== -->
 
+    <filter>
+        <filter-name>RequireHttpsProcessingFilter</filter-name>
+        <filter-class>com.hq.CloudPlatform.BaseFrame.sys.filter.RequireHttpsProcessingFilter</filter-class>
+        <init-param>
+            <param-name>UrlPrefix</param-name>
+            <param-value>^/login\.html</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>RequireHttpsProcessingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <!-- 统一系统UTF-8的编码 -->
     <filter>
         <filter-name>EncodingFilter</filter-name>
