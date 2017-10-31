@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * Created by Administrator on 9/27/2017.
- * 雪花ID 生成器
+ * 雪花ID生成器
  */
 public class SnowFlakeId {
 
