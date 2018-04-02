@@ -32,6 +32,7 @@
         <redis-clients.version>2.9.0</redis-clients.version>
         <spring-redis-data.version>1.8.4.RELEASE</spring-redis-data.version>
         <cas-client.version>3.3.3</cas-client.version>
+        <activiti-version>5.22.0</activiti-version>
     </properties>
 
     <dependencies>
@@ -254,6 +255,19 @@
             <artifactId>spring-data-redis</artifactId>
             <version>${spring-redis-data.version}</version>
         </dependency>
+
+        <!-- Activiti WorkFlow -->
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-engine</artifactId>
+            <version>${activiti-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring</artifactId>
+            <version>${activiti-version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -355,6 +369,15 @@
                 <filtering>true</filtering>
             </resource>
             <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.bpmn</include>
+                    <include>**/*.bar</include>
+                    <include>**/*.zip</include>
+                    <include>**/*.png</include>
+                </includes>
+            </resource>
+            <resource>
                 <directory>src/main/resources/BPM</directory>
                 <targetPath>BPM</targetPath>
             </resource>
@@ -371,7 +394,7 @@
             <properties>
                 <profile.id>development</profile.id>
                 <db.driver_class>com.mysql.jdbc.Driver</db.driver_class>
-                <db.url><![CDATA[jdbc:mysql://192.168.1.210:3306/rmc?useUnicode=true&characterEncoding=UTF-8]]></db.url>
+                <db.url><![CDATA[jdbc:mysql://127.0.0.1:3306/rmc?useUnicode=true&characterEncoding=UTF-8]]></db.url>
                 <db.username>huiqing</db.username>
                 <db.password>huiqing</db.password>
                 <log.dir>${project.basedir}/logs</log.dir>
@@ -385,7 +408,7 @@
             <properties>
                 <profile.id>it</profile.id>
                 <db.driver_class>com.mysql.jdbc.Driver</db.driver_class>
-                <db.url><![CDATA[jdbc:mysql://192.168.1.210:3306/rmc?useUnicode=true&characterEncoding=UTF-8]]></db.url>
+                <db.url><![CDATA[jdbc:mysql://127.0.0.1:3306/rmc?useUnicode=true&characterEncoding=UTF-8]]></db.url>
                 <db.username>huiqing</db.username>
                 <db.password>huiqing</db.password>
                 <log.dir>${project.basedir}/logs</log.dir>
@@ -399,7 +422,7 @@
             <properties>
                 <profile.id>production</profile.id>
                 <db.driver_class>com.mysql.jdbc.Driver</db.driver_class>
-                <db.url><![CDATA[jdbc:mysql://192.168.1.210:3306/rmc?useUnicode=true&characterEncoding=UTF-8]]></db.url>
+                <db.url><![CDATA[jdbc:mysql://127.0.0.1:3306/rmc?useUnicode=true&characterEncoding=UTF-8]]></db.url>
                 <db.username>huiqing</db.username>
                 <db.password>huiqing</db.password>
                 <log.dir>${project.basedir}/logs</log.dir>
