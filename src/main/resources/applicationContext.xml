@@ -189,4 +189,5 @@
 
     <import resource="spring-cache.xml"/>
     <import resource="redis-config.xml"/>
+    <import resource="activiti.cfg.xml"/>
 </beans>
