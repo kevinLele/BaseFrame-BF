@@ -10,20 +10,20 @@
     <cache:annotation-driven/>
 
     <!-- generic cache manager -->
-    <!--<bean id="cacheManager"
+    <bean id="cacheManager"
           class="org.springframework.cache.support.SimpleCacheManager">
         <property name="caches">
             <set>
                 <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
-                      p:name="#{T(com.hq.CloudPlatform.BaseFrame.sys.Constants).CACHE_NAME}"/>
+                      p:name="#{T(com.hq.CloudPlatform.BaseFrame.sys.Constants.Caches).CACHE_NAME}"/>
                 <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"
-                      p:name="#{T(com.hq.CloudPlatform.BaseFrame.sys.Constants).CFG_CACHE_NAME}"/>
+                      p:name="#{T(com.hq.CloudPlatform.BaseFrame.sys.Constants.Caches).CFG_CACHE_NAME}"/>
             </set>
         </property>
-    </bean>-->
+    </bean>
 
     <!-- 配置使用Redis做为缓存服务器 -->
-    <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+    <!--<bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
         <constructor-arg ref="redisTemplate"/>
-    </bean>
+    </bean>-->
 </beans>
